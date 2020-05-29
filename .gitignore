@@ -1,0 +1,3 @@
+.vscode
+cloud-functions/dummy_sacc.json
+cloud-functions/*/__pycache__
