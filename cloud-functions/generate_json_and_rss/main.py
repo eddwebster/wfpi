@@ -25,6 +25,15 @@ def prune_field(fields, to_remove):
     return fields
 
 
+def lower_keys(x):
+    if isinstance(x, list):
+        return [lower_keys(v) for v in x]
+    elif isinstance(x, dict):
+        return dict((k.lower(), lower_keys(v)) for k, v in x.items())
+    else:
+        return x
+
+
 def generate_json_and_rss(event):
     bsnh = Airtable(at_base_key, "Brazilian shirtname holders", api_key=airtable_api_key).get_all(max_records=1000)
     simple_bsnh = {b['id']: b['fields'] for b in bsnh}
@@ -38,12 +47,12 @@ def generate_json_and_rss(event):
     presenters = Airtable(at_base_key, "Presenters", api_key=airtable_api_key).get_all()
     simple_presenters = {p['id']: prune_field(p['fields'], "Episodes") for p in presenters}
 
-    full_data = {
+    full_data = lower_keys({
         'bsnh': simple_bsnh,
         'episodes': simple_episodes,
         'experts': simple_experts,
         'presenters': simple_presenters
-    }
+    })
 
     # # Generate the RSS feed
     fg = FeedGenerator()
