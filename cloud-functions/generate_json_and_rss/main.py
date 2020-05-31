@@ -39,7 +39,8 @@ def generate_json_and_rss(event):
     simple_bsnh = {b['id']: b['fields'] for b in bsnh}
 
     episodes = Airtable(at_base_key, "Episodes", api_key=airtable_api_key).get_all(max_records=1000)
-    simple_episodes = {e['id']: e['fields'] for e in episodes}
+    simple_episodes_unsorted = {e['id']: e['fields'] for e in episodes}
+    simple_episodes = {k: v for (k, v) in sorted(simple_episodes_unsorted.items(), key=lambda x: x[1]['Date'], reverse=True)}
 
     experts = Airtable(at_base_key, "Experts", api_key=airtable_api_key).get_all()
     simple_experts = {e['id']: prune_field(e['fields'], "Episodes") for e in experts}
@@ -64,16 +65,16 @@ def generate_json_and_rss(event):
     fg.link(href='http://worldfootballphonein.com/podcasts/rss.xml', rel='self')
     fg.language('en')
 
-    for e in simple_episodes.values():
-        if 'Podcast in archive' not in e:
-            continue
+    # for e in simple_episodes.values():
+    #     if 'Podcast in archive' not in e:
+    #         continue
 
-        e_url = f"https: // worldfootballphonein.com/podcasts/{e['Date'].replace('-', '')}.mp3"
-        fe = fg.add_entry()
-        fe.id(e_url)
-        fe.title('WFPI episode for ' + e['Date'])
-        fe.description('Footy talk.')
-        fe.enclosure(e_url, 0, 'audio/mpeg')
+    #     e_url = f"https: // worldfootballphonein.com/podcasts/{e['Date'].replace('-', '')}.mp3"
+    #     fe = fg.add_entry()
+    #     fe.id(e_url)
+    #     fe.title('WFPI episode for ' + e['Date'])
+    #     fe.description('Footy talk.')
+    #     fe.enclosure(e_url, 0, 'audio/mpeg')
 
     db_js = "var wfpiDB=" + json.dumps(full_data, separators=(',', ':')) + ";"
 
