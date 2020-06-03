@@ -624,16 +624,19 @@ a:hover {
 # BSNH
 --------------------------------------------------------------*/
 .bsnh .bsn {
-  justify-content: center;
+  text-align: center;
 }
 
 .bsnh h1 {
   color: white;
+  z-index: 1;
+  margin-top: -100px;
 }
 
 .bsnh .bsn h2 {
   font-size: 1rem;
   color: white;
+  margin: 0.3rem 0;
 }
 
 .bsnh .bsn h3 {
