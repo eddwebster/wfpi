@@ -1,0 +1,646 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>World Football Phone In Fans</title>
+    <meta content="Independent, comprehensive fan site of the World Football Phone In radio show." name="description" />
+    <meta content="world football phone in archive podcasts" name="keywords" />
+
+    <link href="assets/img/favicon.png" rel="icon" />
+
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/5b9f4f0765.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body id="page-top">
+    <!-- ======= Header/ Navbar ======= -->
+    <nav class="navbar navbar-expand-md fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll" href="#page-top">WFPI</a>
+        <button
+          class="navbar-toggler collapsed"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarDefault"
+          aria-controls="navbarDefault"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span>asdfasdf</span>
+          <span>asdfasd</span>
+          <span>asfdasdfasdfasdfasdf</span>
+        </button>
+        <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link js-scroll" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll" href="#podcasts">Podcasts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll" href="#contributors">Contributors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll" href="#other-content">Other content</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll" href="#get-involved">Get involved</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ======= Intro Section ======= -->
+    <div id="home" class="intro route bg-image" style="background-image: url(assets/img/intro-bg.jpg);">
+      <div class="overlay-itro"></div>
+      <div class="intro-content display-table">
+        <div class="table-cell">
+          <div class="container">
+            <h1 class="intro-title mt-5">
+              World Football Phone In
+            </h1>
+            <p class="intro-subtitle">
+              An independent, comprehensive WFPI fan site and podcast archive.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Intro Section -->
+
+    <main id="main">
+      <!-- ======= Services Section ======= -->
+      <section id="service" class="services-mf pt-5 route">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="title-box text-center">
+                <h3 class="title-a">
+                  Podcasts
+                </h3>
+                <p class="subtitle-a">
+                  Any episodes that you might have that are missing from the archive before 2018 would be greatly appreciated. If you have any, please
+                  get in contact with the website author at
+                  <a href="mailto:edd.j.webster@gmail.com">edd.j.webster@gmail.com</a>
+                  . Also, big thanks to Simon Sandiford-Mitchell who helped identify the weeks where no show was broadcast.
+                </p>
+                <div class="line-mf"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div id="podcast-table" class="podcast-box">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Regions</th>
+                        <th scope="col">Experts</th>
+                        <th scope="col">Presenter</th>
+                        <th scope="col">Further info</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="e in $db.episodes">
+                        <th scope="row" class="cold-md-3">{{ e.d | formatDate }}</th>
+                        <template v-if="e.hasOwnProperty('t')">
+                          <td v-html="getRegions(e)"></td>
+                          <td v-html="getExperts(e)"></td>
+                          <td>{{ getPresenter(e) }}</td>
+                          <td>{{ e.sp }}</td>
+                        </template>
+                        <template v-else>
+                          <td colspan="4" class="no-show">No show due to {{ e.na }}</td>
+                        </template>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Services Section -->
+
+      <!-- ======= Stat Section ======= -->
+      <div class="section-stats paralax-mf bg-image" style="background-image: url(assets/img/wfpi-wc-bg.jpg);">
+        <div class="overlay-mf"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4 col-lg-4">
+              <div class="stats-box pt-4 pt-md-0">
+                <div class="stats-ico">
+                  <span class="ico-circle"><i class="fas fa-headphones"></i></span>
+                </div>
+                <div class="stats-num">
+                  <p class="stats">500+</p>
+                  <span class="stats-text">ARCHIVED SHOWS</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-lg-4">
+              <div class="stats-box pt-4 pt-md-0">
+                <div class="stats-ico">
+                  <span class="ico-circle"><i class="fas fa-calendar-check"></i></span>
+                </div>
+                <div class="stats-num">
+                  <p class="stats">13</p>
+                  <span class="stats-text">YEARS OF PODCASTS</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-lg-4">
+              <div class="stats-box pt-4 pt-md-0">
+                <div class="stats-ico">
+                  <span class="ico-circle"><i class="fas fa-users"></i></span>
+                </div>
+                <div class="stats-num">
+                  <p class="stats">7</p>
+                  <span class="stats-text">ACTIVE FOOTBALL EXPERTS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Stats Section -->
+
+      <!-- ======= Contributors Section ======= -->
+      <section id="contributors" class="contributors-mf sect-pt4 route">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="title-box text-center">
+                <h3 class="title-a">Contributors</h3>
+                <p class="subtitle-a">Presenters, experts (past and present) and Brazilian shirtname holders.</p>
+                <div class="line-mf"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">The dynamic duo</div>
+          <div class="row justify-content-center">
+            <contributor v-bind:person="$db.presenters['recBNGH8IwsU3hBve']"></contributor>
+            <contributor v-bind:person="$db.experts['rec3M8Ew2q6pTgV03']"></contributor>
+          </div>
+          <div class="row justify-content-center">Active contributors</div>
+          <div class="row">
+            <contributor v-for="p in activeContributors" v-bind:key="p.name" v-bind:person="p"></contributor>
+          </div>
+          <div class="row justify-content-center">Past contributors</div>
+          <div class="row">
+            <contributor v-for="p in pastContributors" v-bind:key="p.name" v-bind:person="p"></contributor>
+          </div>
+        </div>
+      </section>
+      <!-- End Contributors Section -->
+
+      <!-- ======= BSN Section ======= -->
+      <div class="bsnh paralax-mf bg-image" style="background-image: url(assets/img/brazil-58-bg.jpg);" id="bsnh">
+        <div class="overlay-mf"></div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <h1>Brazilian shirtname holders</h1>
+          </div>
+          <div class="row">
+            <div class="col-md-3 bsn" v-for="b in getBSNHolders" :key="b.name">
+              <img src="assets/img/brazilian-shirt.png" alt="Brasil!" :title="b.name + ' (' + b.awardee + ')' " />
+              <h2>"{{ b.name }}"</h2>
+              <h3>{{ b.awardee }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End BSN Section -->
+
+      <!-- ======= About Section ======= -->
+      <section id="about" class="about-mf sect-pt4 route">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="box-shadow-full">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="about-me pt-4 pt-md-0">
+                      <div class="title-box-2">
+                        <h5 class="title-left">
+                          About
+                        </h5>
+                      </div>
+                      <p class="lead">
+                        The World Football Phone-in is a British weekly radio phone-in show about the beautiful game from all around the world. It is
+                        part of the Up All Night programming on BBC Radio 5 Live. The WFPI is broadcast between 2am-4am GMT on Saturday mornings and
+                        is hosted by Dotun Adebayo with South American expert Tim 'The Legendinho' Vickery.
+                      </p>
+                      <p class="lead">
+                        The show started as a 5/10 minute chat with the first episode on 8th December 1997 and since then, has gone from
+                        strength-to-strength, becoming a phone-in in 2002, then to 30 minute show, then 60 minutes, then 90 minutes (as Dotun would
+                        say, it needs to be the length of a match!), and finally in its current form as a two hour show. Over the years the show has
+                        had occasional, longer special broadcasts of up to 4 hours.
+                      </p>
+                      <p class="lead">
+                        This website was created in May 2020 during the COVID-19 pandemic in which the WFPI had the first significant break since it
+                        started over 22 years ago. The aim of this site is to celebrate the WFPI and help to make available as many episodes as
+                        possible to the fans. These are available for download by scrolling down to the following section.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End About Section -->
+
+      <!-- ======= Other Content Section ======= -->
+      <section id="other-content" class="services-mf pt-5 route">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="title-box text-center">
+                <h3 class="title-a">
+                  Other Content
+                </h3>
+                <p class="subtitle-a">
+                  Other content related to the WFPI or its contributors.
+                </p>
+                <div class="line-mf"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="other-content-box">
+                <ul>
+                  <li>
+                    <a href="https://www.bbc.co.uk/blogs/5live/entries/db005c1b-b598-4666-afaf-353cbaa5917e">The World Football Phone-In at 20</a>
+                    by Tim Vickery
+                  </li>
+                  <li>
+                    <a href="https://www.bbc.co.uk/blogs/timvickery">Tim Vickery's Blog for BBC Sport</a>
+                    - last updated 12th November 2012.
+                  </li>
+                  <li>
+                    26/02/2020:
+                    <a href="https://poddtoppen.se/podcast/254078311/football-ramble-daily/ramble-meets-dotun-adebayo">
+                      Dotun's interview with Andy 'Top Brass' Brassell
+                    </a>
+                    for Ramble Meets as part of the
+                    <a href="https://stakhanov.studio/shows/the-football-ramble/">Football Ramble Daily</a>
+                  </li>
+                  <li>
+                    Freo de Janeiro Ep. #10
+                    <a href="http://abidimam.com/timvickery/">Tim Vickery On Culture, Language, Football and Brazil</a>
+                  </li>
+                  <li>
+                    Artist Archivist
+                    <a href="http://www.artistarchivist.co.uk/new-blog/2017/9/3/world-football-phone-in-introduction">
+                      World Football Phone In: introduction
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/bbc5live/status/933094819693342721">Tim Vickery's Blog for BBC Sport</a>
+                    - last updated 12th November 2012.
+                  </li>
+                  <li>
+                    <a href="https://www.facebook.com/watch/live/?v=10156663870996108">
+                      Promo tweet for the World Football Phone In 20th anniversary
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.facebook.com/5liveSport/videos/world-football-phone-in/10156647078516108/">
+                      Facebook video - BBC Radio 5 live Sport - World Football Phone-in
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.facebook.com/watch/live/?v=10156602717761108">
+                      Facebook video - On the World Football Phone-in: World... - BBC Radio 5 live
+                    </a>
+                  </li>
+                  <li>
+                    08/12/2017:
+                    <a href="https://www.planetfootball.com/in-depth/celebrating-20-years-5-lives-cult-hit-world-football-phone/">
+                      Celebrating 20 years of 5 Live’s cult hit, The World Football Phone-In
+                    </a>
+                    by
+                    <a href="https://twitter.com/NestorWatach">Nestor Watach</a>
+                    for
+                    <a href="https://www.planetfootball.com/">Planet Football</a>
+                  </li>
+                  <li>
+                    <a href="https://worldfootballindex.com/2020/04/bbc-world-football-phone-in-wfpi-world-football-index-podcast/">
+                      World Football Phone-in
+                    </a>
+                    by the World Football Index Podcast.
+                  </li>
+                  <li>
+                    <a href="https://en.wikipedia.org/wiki/World_Football_Phone-In">World Football Phone-in Wikipedia article</a>
+                  </li>
+                  <li>
+                    <a href="https://www.gpodder.net/podcast/5-lives-world-football-phone-in/-episodes?page=1">5 live's World Football Phone-in</a>
+                    on
+                    <a href="https://www.gpodder.net/">gpodder.net</a>
+                    . Episodes are not available for download but it's possible to see synopsis for episodes going back to 20th March 2010. This site
+                    used to update the meta information for many of the old episodes pre-2014.
+                  </li>
+                  <li>
+                    A different
+                    <a href="https://www.youtube.com/channel/UCQSF_6X8Q-7kRi-HZiXzjog">BBC 5 Live World Football Phone-In Archive YouTube channel</a>
+                    , with episodes between May 2017 and October 2018 (all are available on this site).
+                  </li>
+                  <li>
+                    <a href="https://www.youtube.com/watch?v=Qya3B4-7mgE">Meeting Tim Vickery, BBC's Mr Brazil: Best Job In The World</a>
+                  </li>
+                  <li>
+                    <a href="https://www.youtube.com/watch?v=mj7ME5t6KX8">Real Sounds of Africa - Soccer Fan (Original Version)</a>
+                  </li>
+                  <li>
+                    <a href="https://www.mixcloud.com/paulsarahs/uploads/">
+                      Paul Sarah's uploads to Mixcloud - approximately 30 odd episodes (all are available on this site)
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.theblizzard.co.uk/article/darkness-falls">
+                      Darkness Falls - How football facilitated the rise of Brazil’s new leader, Jair Bolsonaro
+                    </a>
+                    by Tim Vickery for The Blizzard.
+                  </li>
+                  <li>
+                    <a href="https://www.youtube.com/watch?v=Csij7c1s_jY">BBC Storyville 2002 Gods Of Brazil Pele And Garrincha</a>
+                    - mentioned in the podcast on 15th December 2007.
+                  </li>
+                  <li>
+                    Real Sounds of Africa:
+                    <br />
+                    <iframe
+                      width="560"
+                      height="315"
+                      src="https://www.youtube.com/embed/n6xkheBCi9M"
+                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen=""
+                    ></iframe>
+                  </li>
+                  <li>
+                    'The Best World Football Phone in Call Ever':
+                    <br />
+                    <iframe
+                      width="560"
+                      height="315"
+                      src="https://www.youtube.com/embed/bqVae1t9on8"
+                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen=""
+                    ></iframe>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Other Content Section -->
+
+      <!-- ======= Contribute Section ======= -->
+      <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(assets/img/golazo-bg.jpg);">
+        <div class="overlay-mf"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="contact-mf">
+                <div id="contact" class="box-shadow-full">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="title-box-2">
+                        <h5 class="title-left">
+                          Send Message Us
+                        </h5>
+                      </div>
+                      <div>
+                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                          <div class="row">
+                            <div class="col-md-12 mb-3">
+                              <div class="form-group">
+                                <input
+                                  type="text"
+                                  name="name"
+                                  class="form-control"
+                                  id="name"
+                                  placeholder="Your Name"
+                                  data-rule="minlen:4"
+                                  data-msg="Please enter at least 4 chars"
+                                />
+                                <div class="validate"></div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                              <div class="form-group">
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  name="email"
+                                  id="email"
+                                  placeholder="Your Email"
+                                  data-rule="email"
+                                  data-msg="Please enter a valid email"
+                                />
+                                <div class="validate"></div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                              <div class="form-group">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  name="subject"
+                                  id="subject"
+                                  placeholder="Subject"
+                                  data-rule="minlen:4"
+                                  data-msg="Please enter at least 8 chars of subject"
+                                />
+                                <div class="validate"></div>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <textarea
+                                  class="form-control"
+                                  name="message"
+                                  rows="5"
+                                  data-rule="required"
+                                  data-msg="Please write something for us"
+                                  placeholder="Message"
+                                ></textarea>
+                                <div class="validate"></div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 text-center mb-3">
+                              <div class="loading">
+                                Loading
+                              </div>
+                              <div class="error-message"></div>
+                              <div class="sent-message">
+                                Your message has been sent. Thank you!
+                              </div>
+                            </div>
+                            <div class="col-md-12 text-center">
+                              <button type="submit" class="button button-a button-big button-rouded">
+                                Send Message
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="title-box-2 pt-4 pt-md-0">
+                        <h5 class="title-left">
+                          Get in Touch
+                        </h5>
+                      </div>
+                      <div class="more-info">
+                        <p class="lead">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolorum dolorem soluta quidem expedita aperiam aliquid at.
+                          Totam magni ipsum suscipit amet? Autem nemo esse laboriosam ratione nobis mollitia inventore?
+                        </p>
+                        <ul class="list-ico">
+                          <li>
+                            <span class="ion-ios-location"></span>
+                            329 WASHINGTON ST BOSTON, MA 02108
+                          </li>
+                          <li>
+                            <span class="ion-ios-telephone"></span>
+                            (617) 557-0089
+                          </li>
+                          <li>
+                            <span class="ion-email"></span>
+                            contact@example.com
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="socials">
+                        <ul>
+                          <li>
+                            <a href="">
+                              <span class="ico-circle"><i class="ion-social-facebook"></i></span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="">
+                              <span class="ico-circle"><i class="ion-social-instagram"></i></span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="">
+                              <span class="ico-circle"><i class="ion-social-twitter"></i></span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="">
+                              <span class="ico-circle"><i class="ion-social-pinterest"></i></span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Contact Section -->
+    </main>
+    <!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="copyright-box">
+              <div class="credits">
+                <!--
+              All the links in the footer should remain intact.
+              You can delete the links only if you purchased the pro version.
+              Licensing information: https://bootstrapmade.com/license/
+              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=DevFolio
+            -->
+                Designed by
+                <a href="https://bootstrapmade.com/">BootstrapMade</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End  Footer -->
+
+    <script type="text/x-template" id="contributor-template">
+      <div class="col-md-4">
+        <div class="contributors-box">
+          <a href="assets/img/work-1.jpg">
+            <div class="contributors-img">
+              <img v-bind:src="person.name | personImage" v-bind:alt="person.name" class="img-fluid" />
+            </div>
+            <div class="contributors-content">
+              <div class="row">
+                <div class="col-sm-8">
+                  <h2 class="w-title">
+                    {{ person.name }}
+                  </h2>
+                  <h3 class="w-bsn">
+                    "{{ person.bsn }}"
+                  </h3>
+                  <div class="w-more">
+                    <template v-if="person.region">
+                      <span class="w-ctegory">Expert</span>
+                      /
+                      <span>{{ person.region }}</span>
+                    </template>
+                    <template v-else>
+                      <span class="w-ctegory">Presenter</span>
+                    </template>
+                    /
+                    <a v-if="person.twitter" v-bind:href="person.twitter" title="Twitter">
+                      <i class="fab fa-twitter-square"></i>
+                    </a>
+                    <a v-if="person.instagram" v-bind:href="person.instagram" title="Instagram">
+                      <i class="fab fa-instagram"></i>
+                    </a>
+                    <a v-if="person.website" v-bind:href="person.website" title="Website">
+                      <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="w-like">
+                    <span class="ion-ios-plus-outline"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </script>
+    <script src="https://storage.googleapis.com/wfpi-podcasts-archive/db.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
