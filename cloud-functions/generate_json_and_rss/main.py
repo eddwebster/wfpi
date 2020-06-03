@@ -39,8 +39,7 @@ def generate_json_and_rss(event):
     simple_bsnh = map_fields(simple_bsnh_unmapped, {
         'Name': "name",
         'Awarded': "awarded",
-        'Awardee': "awardee",
-        'Contenders': 'ctdrs'
+        'Awardee': "awardee"
     })
 
     episodes = Airtable(at_base_key, "Episodes", api_key=airtable_api_key).get_all(max_records=1000)
