@@ -594,17 +594,12 @@ a:hover {
 }
 
 .contributors-content .w-more .w-ctegory {
-  color: #0078ff;
+  font-weight: 600;
 }
 
 .contributors-content .w-like {
-  font-size: 2.5rem;
-  color: #0078ff;
+  font-size: 2rem;
   float: right;
-}
-
-.contributors-content .w-like a {
-  color: #0078ff;
 }
 
 .contributors-content .w-like .num-like {
