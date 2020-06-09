@@ -105,6 +105,10 @@
             <div class="col-md-12">
               <div id="podcast-table" class="podcast-box">
                 <div class="table-responsive">
+                  <label for="cars">Year:</label>
+                  <select name="cars" id="cars" v-model="currentYear">
+                    <option v-for="y in years" :value="y">{{ y }}</option>
+                  </select>
                   <table class="table">
                     <thead>
                       <tr>
@@ -116,7 +120,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="e in $db.episodes">
+                      <tr v-for="e in episodes">
                         <th scope="row" class="cold-md-3">{{ e.d | formatDate }}</th>
                         <template v-if="e.hasOwnProperty('t')">
                           <td v-html="getRegions(e)"></td>

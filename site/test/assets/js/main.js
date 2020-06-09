@@ -16,6 +16,25 @@ Vue.filter("personImage", function (name) {
 
 const podcastTable = new Vue({
   el: "#podcast-table",
+  computed: {
+    // Get a list of all years which we have on archive
+    years: function () {
+      let years = new Set();
+      for (let [_, e] of Object.entries(this.$db.episodes)) {
+        years.add(e.d.substring(0, 4));
+      }
+      return Array.from(years).sort().reverse();
+    },
+    episodes: function () {
+      let episodes = new Array();
+      for (let [_, e] of Object.entries(this.$db.episodes)) {
+        if (e.d.startsWith(this.currentYear)) {
+          episodes.push(e);
+        }
+      }
+      return episodes;
+    },
+  },
   methods: {
     getNameAndBsn(person) {
       return person.name + ' ("' + person.bsn + '")';
@@ -35,6 +54,9 @@ const podcastTable = new Vue({
         .sort()
         .join("<br/>");
     },
+  },
+  data: {
+    currentYear: moment().format("YYYY"),
   },
 });
 
