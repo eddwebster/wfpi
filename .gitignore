@@ -1,3 +1,8 @@
 .vscode
 cloud-functions/dummy_sacc.json
 cloud-functions/*/__pycache__
+site/.config
+site/.npm
+site/dist
+site/node_modules
+site/package-lock.json

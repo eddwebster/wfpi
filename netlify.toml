@@ -1,0 +1,9 @@
+[build]
+  base = "site/"
+  publish = "dist/"
+  command = "./build.sh"
+
+[[redirects]]
+  from = "/podcasts/*"
+  to = "https://storage.googleapis.com/wfpi-podcasts-archive/:splat"
+  status = 200
