@@ -585,12 +585,16 @@ a:hover {
 }
 
 .contributors-content {
-  padding: 2rem 3% 1rem 4%;
+  padding: 1rem 3% 1rem 4%;
 }
 
 .contributors-content .w-more {
   color: #4e4e4e;
   font-size: 0.8rem;
+}
+
+.past-contributors .contributors-content .w-more {
+  font-size: 0.7rem;
 }
 
 .contributors-content .w-more .w-ctegory {
@@ -610,9 +614,17 @@ a:hover {
   font-size: 1.2rem;
 }
 
+.contributors-box .w-title {
+  font-size: 1rem;
+}
+
 .w-bsn {
   font-size: 1rem;
   font-style: italic;
+}
+
+.contributors-box .w-bsn {
+  font-size: 0.8rem;
 }
 
 /*--------------------------------------------------------------

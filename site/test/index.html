@@ -16,7 +16,7 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/style.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/5b9f4f0765.js" crossorigin="anonymous"></script>
   </head>
 
@@ -193,22 +193,30 @@
               <div class="title-box text-center">
                 <h3 class="title-a">Contributors</h3>
                 <p class="subtitle-a">Presenters, experts (past and present) and Brazilian shirtname holders.</p>
-                <div class="line-mf"></div>
               </div>
             </div>
           </div>
-          <div class="row justify-content-center">The dynamic duo</div>
           <div class="row justify-content-center">
-            <contributor v-bind:person="$db.presenters['recBNGH8IwsU3hBve']"></contributor>
-            <contributor v-bind:person="$db.experts['rec3M8Ew2q6pTgV03']"></contributor>
+            <h4>The dynamic duo</h4>
           </div>
-          <div class="row justify-content-center">Active contributors</div>
-          <div class="row">
-            <contributor v-for="p in activeContributors" v-bind:key="p.name" v-bind:person="p"></contributor>
+          <div class="line-mf mb-4"></div>
+          <div class="row justify-content-center">
+            <contributor :person="$db.presenters['recBNGH8IwsU3hBve']" :widgetsize="4"></contributor>
+            <contributor :person="$db.experts['rec3M8Ew2q6pTgV03']" :widgetsize="4"></contributor>
           </div>
-          <div class="row justify-content-center">Past contributors</div>
+          <div class="row justify-content-center">
+            <h4>Active contributors</h4>
+          </div>
+          <div class="line-mf mb-4"></div>
           <div class="row">
-            <contributor v-for="p in pastContributors" v-bind:key="p.name" v-bind:person="p"></contributor>
+            <contributor v-for="p in activeContributors" :key="p.name" :person="p" :widgetsize="4"></contributor>
+          </div>
+          <div class="row justify-content-center">
+            <h4>Past contributors</h4>
+          </div>
+          <div class="line-mf mb-4"></div>
+          <div class="row past-contributors">
+            <contributor v-for="p in pastContributors" :key="p.name" :person="p" :widgetsize="2"></contributor>
           </div>
         </div>
       </section>
@@ -390,26 +398,12 @@
                     - mentioned in the podcast on 15th December 2007.
                   </li>
                   <li>
-                    Real Sounds of Africa:
-                    <br />
-                    <iframe
-                      width="560"
-                      height="315"
-                      src="https://www.youtube.com/embed/n6xkheBCi9M"
-                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen=""
-                    ></iframe>
+                    Official World Football Phone In theme song:
+                    <a href="https://www.youtube.com/watch?v=n6xkheBCi9M">Soccer fan by the Real Sound of Africa</a>
                   </li>
                   <li>
-                    'The Best World Football Phone in Call Ever':
-                    <br />
-                    <iframe
-                      width="560"
-                      height="315"
-                      src="https://www.youtube.com/embed/bqVae1t9on8"
-                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen=""
-                    ></iframe>
+                    Recording of
+                    <a href="https://www.youtube.com/watch?v=bqVae1t9on8">'The Best World Football Phone in Call Ever'</a>
                   </li>
                 </ul>
               </div>
@@ -596,7 +590,7 @@
     <!-- End  Footer -->
 
     <script type="text/x-template" id="contributor-template">
-      <div class="col-md-4">
+      <div :class="'col-md-' + widgetsize">
         <div class="contributors-box">
           <a href="assets/img/work-1.jpg">
             <div class="contributors-img">
@@ -604,13 +598,9 @@
             </div>
             <div class="contributors-content">
               <div class="row">
-                <div class="col-sm-8">
-                  <h2 class="w-title">
-                    {{ person.name }}
-                  </h2>
-                  <h3 class="w-bsn">
-                    "{{ person.bsn }}"
-                  </h3>
+                <div class="col-sm">
+                  <h2 class="w-title">{{ person.name }}</h2>
+                  <h3 class="w-bsn">"{{ person.bsn }}"</h3>
                   <div class="w-more">
                     <template v-if="person.region">
                       <span class="w-ctegory">Expert</span>
@@ -632,11 +622,6 @@
                     </a>
                   </div>
                 </div>
-                <div class="col-sm-4">
-                  <div class="w-like">
-                    <i class="fas fa-search-plus" :title="'More details about ' + person.name"></i>
-                  </div>
-                </div>
               </div>
             </div>
           </a>
@@ -644,8 +629,8 @@
       </div>
     </script>
     <script src="https://storage.googleapis.com/wfpi-podcasts-archive/db.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/main.js"></script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 Vue.prototype.$db = wfpiDB;
 
 Vue.component("contributor", {
-  props: ["person"],
+  props: ["person", "widgetsize"],
   template: "#contributor-template",
 });
 
